@@ -129,11 +129,13 @@ Las opciones de filtrado en VCFtools pueden ser visualizadas con el comando `man
  Dependiendo del objetivo del estudio, se pueden hacer varias corridas. En este ejemplo, haremos análisis poblacionales clásicos (estructura y diversidad genética) y análisis de SNPs candidatos a selección. Por lo tanto, se construirán 2 sets de datos.
 
 **set de datos 1, análsis de selección**
+
 Objetivo: eliminar alelos con frecuencia menor al 4%, retener _loci_ bialelélicos con profundidad mayor a 10 y menos del 90% de _missing data_.
 
 `vcftools --vcf U90M90.vcf --maf 0.04 --min-meanDP 10 --min-alleles 2 --max-alleles 2 --max-missing 0.9 --recode --out U90M90_maf0.04_DP10_MD0.9`
 
 **set de datos 2, análisis de estructura y diversidad**
+
 A la salida anterior, aplicarle el filtro de desequilibrio de ligamiento.
 
 `vcftools --vcf U90M90_maf0.04_DP10_MD0.9.vcf --thin 1000 --recode --out U90M90_maf0.04_DP10_DL.vcf`
