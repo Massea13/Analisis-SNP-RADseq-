@@ -102,14 +102,15 @@ Crear el archivo de parámetros que emplea ipyrad. Colocar un nombre informativo
  Para más información consulta el [manual de ipyrad](https://ipyrad.readthedocs.io/en/master/6-params.html)
  
 **A continuación, algunos parámetros importantes a considerar:**
-[1] [project_dir]: Especificar directorio de los archivos de salida.
-[4] [sorted_fastq_path]: Location of demultiplexed/sorted fastq files. _/botete/usuario/NGS/02.trimmomatic/*trim.fastq.gz_
-[7] [datatype]: Datatype (see docs): rad, gbs, ddrad, etc. _pair3rad_
-[8] [restriction_overhang] _colocar el sitio de corte de mis enzimas: AATTC, CTAGC, CTAGA (para EcoR1, Xba y NheI)_
-[14] [clust_threshold]: Clustering threshold for de novo assembly. _Colocar el umbral de similitud para la creación de clusters (en este ejemplo 0.90)_
-[21] [min_samples_locus]: Min # samples per locus for output. _Depende del tamaño de muestra y cuanto missing data acaptaré (ej. si tengo 60 muestras y solo aceptaré el 90% de missing data, en esta casilla debo colocar 54)_
-[22] [max_SNPs_locus]: Número máximo de SNPs por locus. _0.1 = 10%_
-[27] [output_formats]: Output formats (see docs). Colocar * para que genere todos los formatos posibles.
+
+- [1] [project_dir]: Especificar directorio de los archivos de salida.
+- [4] [sorted_fastq_path]: Location of demultiplexed/sorted fastq files. _/botete/usuario/NGS/02.trimmomatic/*trim.fastq.gz_
+- [7] [datatype]: Datatype (see docs): rad, gbs, ddrad, etc. _pair3rad_
+- [8] [restriction_overhang] _colocar el sitio de corte de mis enzimas: AATTC, CTAGC, CTAGA (para EcoR1, Xba y NheI)_
+- [14] [clust_threshold]: Clustering threshold for de novo assembly. _Colocar el umbral de similitud para la creación de clusters (en este ejemplo 0.90)_
+- [21] [min_samples_locus]: Min # samples per locus for output. _Depende del tamaño de muestra y cuanto missing data acaptaré (ej. si tengo 60 muestras y solo aceptaré el 90% de missing data, en esta casilla debo colocar 54)_
+- [22] [max_SNPs_locus]: Número máximo de SNPs por locus. _0.1 = 10%_
+- [27] [output_formats]: Output formats (see docs). Colocar * para que genere todos los formatos posibles.
 
 Una vez fijados los parámetros de la corrida modificando el params-U90M90, ya se puede correr ipyrad
 
