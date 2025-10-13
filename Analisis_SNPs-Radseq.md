@@ -134,11 +134,13 @@ Objetivo: eliminar alelos con frecuencia menor al 4%, retener _loci_ bialelélic
 
 `vcftools --vcf U90M90.vcf --maf 0.04 --min-meanDP 10 --min-alleles 2 --max-alleles 2 --max-missing 0.9 --recode --out U90M90_maf0.04_DP10_MD0.9`
 
+
 **set de datos 2, análisis de estructura y diversidad**
 
-A la salida anterior, aplicarle el filtro de desequilibrio de ligamiento.
+Objetivo: A la salida anterior, aplicarle el filtro de desequilibrio de ligamiento.
 
 `vcftools --vcf U90M90_maf0.04_DP10_MD0.9.vcf --thin 1000 --recode --out U90M90_maf0.04_DP10_DL.vcf`
+
  
 Para ambos sets de datos, visualizar el archivo.log para ver cuantos sitios se mantienen luego del filtrado.
 
