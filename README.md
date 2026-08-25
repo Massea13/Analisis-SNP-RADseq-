@@ -20,7 +20,7 @@ En mi computadora, agrupar todos los datos crudos (R1 y R2) en una carperta deno
 
 En la terminal local colocar la siguiente instrucción:
 
-`scp -r -P 1967 Desktop/NGS/00.RawData/* massiel.alfonsoglez@132.248.15.41:/home/massiel.alfonsoglez/curso/00.RawData`
+`scp -r -P 1967 Desktop/NGS/00.RawData/* massiel.alfonsoglez@132.248.15.41:/home/usuario/curso/00.RawData`
 
 La carpeta 00.RawData debió ser creada previamente en el usuario del servidor
 
@@ -29,6 +29,8 @@ Crear la carpeta 00.RawData y colocarse en ella
 `cp /home/massiel.alfonsoglez/curso/* .`
 
 ### 1.2 Visualizar un archivo fastq
+`head archivo.fastq`
+`zcat archivo.fastq.gz | head -n 20`
 
 ### 2. Conectarse al servidor
 
@@ -58,6 +60,10 @@ Abrir los .html, visualizar la calidad y definir los parámetros de limpieza.
 
 Colocarse en la carpeta que contiene los datos crudos: _00.RawData_
 
+Para cada muestra pair-end de manera independiente
+`java -jar /opt/Trimmomatic-0.39/trimmomatic-0.39.jar PE -threads 10 -phred33 -trimlog BK01triminfo.txt BK01_S95_L001_R1_001.fastq.gz BK01_S95_L001_R2_001.fastq.gz BK01_R1_trimm.fastq.gz BK01_R1_unpair.fastq BK01_R2_trimm.fastq.gz BK01_R2_unpair.fastq ILLUMINACLIP:/opt/Trimmomatic-0.39/adapters/TruSeq2-PE.fa:2:8:10:8:True HEADCROP:14 LEADING:5 TRAILING:5 SLIDINGWINDOW:5:15 MINLEN:110`
+
+
 Loop para Trimmomatic con pair-end. Para más información consulta [aquí](https://hoytpr.github.io/bioinformatics-semester/materials/loop-extra/)
 
 ```Javascript
@@ -67,13 +73,13 @@ java -jar /opt/Trimmomatic-0.39/trimmomatic-0.39.jar PE -threads 10 -phred33 ${i
 done
 ```
 
-Se van a generar archivos con terminación _trim.fastq.gz_ (son los de interés) y _un_trim.fastq.gz_ (son reads no pareados, no son de interés para el análisis).
+Se van a generar archivos con terminación _trim.fastq.gz_ (son los de interés) y _un_trim.fastq.gz_ (son reads no pareados, no son de interés para los análisis posteriores).
 
-Para mantener el orden, crear una nueva carpeta  denominada _02.Trimmomatic_ en /botete/usuario/NGS/
+Para mantener el orden, crear una nueva carpeta  denominada _02.Trimmomatic_ en /home/usuario/
 
 Entrar a la carpeta _02.Trimmomatic_ y mover los _trim.fastq.gz_ y los _un_trim.fastq.gz_
-`mv /botete/usuario/NGS/00.RawData/*.trim.fastq.gz .`
-`mv /botete/usuario/NGS/00.RawData/*.un_trim.fastq.gz .`
+`mv /home/usuario/curso/00.RawData/*.trim.fastq.gz .`
+`mv /home/usuario/curso/00.RawData/*.un_trim.fastq.gz .`
 
 ### 5. Visualizar la calidad de los datos limpios con FastQC
 
@@ -81,25 +87,25 @@ Entrar a la carpeta _02.Trimmomatic_ y mover los _trim.fastq.gz_ y los _un_trim.
 
 Nuevamente, se generan archivos .html y .zip
 
-Para mantener el orden, crear una nueva carpeta denominada _03.FastQC_limpios_ en /botete/usuario/NGS/
+Para mantener el orden, crear una nueva carpeta denominada _03.FastQC_limpios_ en /home/usuario/
  
 Entrar a la carpeta _03.FastQC_limpios_ y mover los .html y los .zip 
 
-`mv /botete/usuario/NGS/02.Trimmomatic/*.html .`
-`mv /botete/usuario/NGS/02.Trimmomatic/*.zip .`
+`mv /home/usuario/curso/02.Trimmomatic/*.html .`
+`mv /home/usuario/curso/02.Trimmomatic/*.zip .`
 
 Mover los archivos.html del servidor a la computadora local para poder visualizarlos
 
-`scp -r -P 7915 usuario@132.248.15.30:/botete/usuario/NGS/03.FastQC_limpios/*.html /home/Usuario/Desktop/NGS/03.FastQC_limpios`
+`scp -r -P 1967 usuario@132.248.15.41:/bhome/usuario/curso/03.FastQC_limpios/*.html /home/Usuario/Desktop/NGS/03.FastQC_limpios`
 
 Abrir los .html y verificar si mejoró la calidad. En caso de no mejorar, repetir a partir del paso 4, definiendo nuevos parámetros de limpieza.
 
 Una vez obtenidos los .fastq con la calidad deseada, copiarlos  del servidor a la computadora local para respaldarlos. Estos serán los datos que se emplearán en los análisis posteriores. 
 
-`scp -r -P 7915 usuario@132.248.15.30:/botete/usuario/NGS/02.Trimmomatic/*trim.fastq.gz /home/Usuario/Desktop/NGS/02.Trimmomatic`
+`scp -r -P 1967 usuario@132.248.15.41:/home/usuario/curso/02.Trimmomatic/*trim.fastq.gz /home/Usuario/Desktop/NGS/02.Trimmomatic`
 
 ### 6. SNPs _calling_ en ipyrad
-Crear la carpeta _04.ipyrad_ en /botete/usuario/NGS/
+Crear la carpeta _04.ipyrad_ en /home/usuario/
 Entrar a la carpeta y activar el ambiente conda para correr el programa.
 
 `conda activate ipyrad`
