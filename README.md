@@ -20,13 +20,19 @@ En mi computadora, agrupar todos los datos crudos (R1 y R2) en una carperta deno
 
 En la terminal local colocar la siguiente instrucción:
 
-`scp -r -P 7915 Desktop/NGS/00.RawData/* malfonso@132.248.15.30:/botete/usuario/NGS/00.RawData`
+`scp -r -P 1967 Desktop/NGS/00.RawData/* massiel.alfonsoglez@132.248.15.41:/home/massiel.alfonsoglez/curso/00.RawData`
 
-La carpeta NGS/00.RawData debió ser creada previamente en el usuario del servidor
+La carpeta 00.RawData debió ser creada previamente en el usuario del servidor
+
+### 1.1 Copiar los archivos de otro usuario del servidor
+Crear la carpeta 00.RawData y colocarse en ella
+`cp /home/massiel.alfonsoglez/curso/* .`
+
+### 1.2 Visualizar un archivo fastq
 
 ### 2. Conectarse al servidor
 
-`ssh usuario@132.248.15.30 -p 7915 -o ServerAliveInterval=60`
+`ssh usuario@132.248.15.41 -p 1967 -o ServerAliveInterval=60`
 
 Dentro de la carperta _00.RawData_, verificar la cantidad de secuencias subidas
 `ls | wc -l`
@@ -36,19 +42,19 @@ Dentro de la carperta _00.RawData_, verificar la cantidad de secuencias subidas
 
 Como resultado se van a generar archivos .html y .zip. 
 
-Para mantener el orden, crear una nueva carpeta denominada _01.FastQC_crudos_ en /botete/usuario/NGS/
+Para mantener el orden, crear una nueva carpeta denominada _01.FastQC_crudos_ en /home/usuario/
  
 Entrar a la carpeta _01.FastQC_crudos_ y mover los .html y los .zip 
-`mv /botete/usuario/NGS/00.RawData/*.html .`
-`mv /botete/usuario/NGS/00.RawData/*.zip .`
+`mv /home/usuario/curso/00.RawData/*.html .`
+`mv /home/usuario/curso/00.RawData/*.zip .`
 
 Mover los archivos.html del servidor a la computadora local para poder visualizarlos
 
-`scp -r -P 7915 usuario@132.248.15.30:/botete/usuario/NGS/01.FastQC_crudos/*fastqc.html /home/Usuario/Desktop/NGS/01.FastQC_crudos`
+`scp -r -P 1967 usuario@132.248.15.41:/home/usuario/curso/01.FastQC_crudos/*fastqc.html /home/Usuario/Desktop/NGS/01.FastQC_crudos`
 
 Abrir los .html, visualizar la calidad y definir los parámetros de limpieza.
 
-### 4. Limpieza de datos en Trimmomatic
+### 4. Limpieza de datos en [Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic)
 
 Colocarse en la carpeta que contiene los datos crudos: _00.RawData_
 
