@@ -58,13 +58,21 @@ Abrir los .html, visualizar la calidad y definir los parámetros de limpieza.
 
 ### 4. Limpieza de datos en [Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic)
 
-Colocarse en la carpeta que contiene los datos crudos: _00.RawData_
+En home/usuario, crear la carpeta 02.trimmomatic donde se guardaràn los resultados de la corrida
 
-Para cada muestra pair-end de manera independiente
+# Para cada muestra single-end de manera independiente
+`trimmomatic SE muestra.fastq  muestra_trim.fastq   ILLUMINACLIP:TruSeq3-SE.fa:2:30:10   LEADING:5 TRAILING:3   SLIDINGWINDOW:5:15   MINLEN:130`
+
+Colocarse en home/usuario
+# Loop para Trimmomatic con single end (SE)
+`for i in 00.rawdata/*.fastq; do     filename=$(basename "$i");     trimmomatic SE -phred33         "$i"         "02.trimmomatic/trimm_$filename"         HEADCROP:7         LEADING:5         TRAILING:5         SLIDINGWINDOW:5:15         MINLEN:150; done`
+
+
+# Para cada muestra pair-end de manera independiente
 `java -jar /opt/Trimmomatic-0.39/trimmomatic-0.39.jar PE -threads 10 -phred33 -trimlog BK01triminfo.txt BK01_S95_L001_R1_001.fastq.gz BK01_S95_L001_R2_001.fastq.gz BK01_R1_trimm.fastq.gz BK01_R1_unpair.fastq BK01_R2_trimm.fastq.gz BK01_R2_unpair.fastq ILLUMINACLIP:/opt/Trimmomatic-0.39/adapters/TruSeq2-PE.fa:2:8:10:8:True HEADCROP:14 LEADING:5 TRAILING:5 SLIDINGWINDOW:5:15 MINLEN:110`
 
 
-Loop para Trimmomatic con pair-end. Para más información consulta [aquí](https://hoytpr.github.io/bioinformatics-semester/materials/loop-extra/)
+# Loop para Trimmomatic con pair-end (PE). Para más información consulta [aquí](https://hoytpr.github.io/bioinformatics-semester/materials/loop-extra/)
 
 ```Javascript
 for infile in *1.fastq.gz ;     do 
