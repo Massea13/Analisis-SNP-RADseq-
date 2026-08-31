@@ -129,6 +129,7 @@ Crear el archivo de parámetros que emplea ipyrad. Colocar un nombre informativo
 
 - [1] [project_dir]: Especificar directorio de los archivos de salida.
 - [4] [sorted_fastq_path]: Location of demultiplexed/sorted fastq files. _/ruta/*trim.fastq.gz_
+- [5] [assembly_method]: Assembly method (denovo, reference, etc)
 - [7] [datatype]: Datatype (see docs): rad, gbs, ddrad, etc. _pair3rad_
 - [8] [restriction_overhang] _colocar el sitio de corte de mis enzimas: AATTC, CTAGC, CTAGA (para EcoR1, Xba y NheI)_
 - [14] [clust_threshold]: Clustering threshold for de novo assembly. _Colocar el umbral de similitud para la creación de clusters (en este ejemplo 0.90)_
@@ -146,7 +147,7 @@ Una vez culminada la corrida, verificar los resultados guardados en la carpeta _
 El archivo **_U90M90.vcf_** va a contener la matriz de SNPs.
 
 ### 7. Filtrado adicional con VCFtools
-Crear la carpeta _VCFtools_ en /botete/usuario/NGS/04.ipyrad/U90M90
+Crear la carpeta _VCFtools_ en /home/usuario
 
 Las opciones de filtrado en VCFtools pueden ser visualizadas con el comando `man vcftools`
  
