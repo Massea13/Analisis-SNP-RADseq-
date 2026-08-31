@@ -61,7 +61,7 @@ Abrir los .html, visualizar la calidad y definir los parámetros de limpieza.
 En home/usuario, crear la carpeta 02.trimmomatic donde se guardaràn los resultados de la corrida
 
 # Para cada muestra single-end de manera independiente
-`trimmomatic SE muestra.fastq  muestra_trim.fastq   ILLUMINACLIP:TruSeq3-SE.fa:2:30:10     SLIDINGWINDOW:5:15   MINLEN:130`
+`trimmomatic SE muestra.fastq  muestra_trim.fastq   ILLUMINACLIP:TruSeq3-SE.fa:2:30:10`
 
 Colocarse en home/usuario
 # Loop para Trimmomatic con single end (SE)
@@ -128,7 +128,7 @@ Crear el archivo de parámetros que emplea ipyrad. Colocar un nombre informativo
 **A continuación, algunos parámetros importantes a considerar:**
 
 - [1] [project_dir]: Especificar directorio de los archivos de salida.
-- [4] [sorted_fastq_path]: Location of demultiplexed/sorted fastq files. _/botete/usuario/NGS/02.trimmomatic/*trim.fastq.gz_
+- [4] [sorted_fastq_path]: Location of demultiplexed/sorted fastq files. _/ruta/*trim.fastq.gz_
 - [7] [datatype]: Datatype (see docs): rad, gbs, ddrad, etc. _pair3rad_
 - [8] [restriction_overhang] _colocar el sitio de corte de mis enzimas: AATTC, CTAGC, CTAGA (para EcoR1, Xba y NheI)_
 - [14] [clust_threshold]: Clustering threshold for de novo assembly. _Colocar el umbral de similitud para la creación de clusters (en este ejemplo 0.90)_
