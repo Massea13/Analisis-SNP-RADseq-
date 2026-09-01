@@ -155,7 +155,7 @@ Las opciones de filtrado en VCFtools pueden ser visualizadas con el comando `man
 
 **set de datos 1, análsis de selección**
 
-Objetivo: eliminar alelos con frecuencia menor al 4%, retener _loci_ bialelélicos con profundidad mayor a 10 y menos del 90% de _missing data_.
+Objetivo: eliminar alelos con frecuencia menor al 4%, retener _loci_ bialelélicos con profundidad mayor a 10 y máximo 10% de _missing data_.
 
 `vcftools --vcf U90M90.vcf --maf 0.04 --min-meanDP 10 --min-alleles 2 --max-alleles 2 --max-missing 0.9 --recode --out U90M90_maf0.04_DP10_MD0.9`
 
