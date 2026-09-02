@@ -170,4 +170,8 @@ Objetivo: A la salida anterior, aplicarle el filtro de desequilibrio de ligamien
 Para ambos sets de datos, visualizar el archivo.log para ver cuantos sitios se mantienen luego del filtrado.
 
 _En este punto, ya están listos los sets de datos a emplear en análisis de estructura, diversidad y selección. Revisar el nombre de las muestras en los vcf resultantes y modificarlos si es requerido._
+
+## Descargar el vcf 
+En la terminal de mi compu
+`scp -r -P 1967 massiel.alfonsoglez@132.248.15.41:/home/massiel.alfonsoglez/curso/04.ipyrad/U90M90_outfiles/U90M90_maf0.04_DP10_MD0.9.vcf /home/alex-dll/Escritorio`
  
